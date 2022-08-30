@@ -4,6 +4,7 @@ use macroquad::prelude::*;
 async fn main() {
     let bg_color = macroquad::color::Color::from_rgba(255, 196, 196, 255);
     let board_texture = load_texture("./assests/board.png").await.unwrap();
+    board_texture.set_filter(FilterMode::Nearest);
 
     loop {
         clear_background(bg_color);
