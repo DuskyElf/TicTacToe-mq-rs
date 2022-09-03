@@ -42,7 +42,7 @@ pub enum Point {
 }
 
 impl Point {
-    fn value(&self) -> usize {
+    pub fn value(&self) -> usize {
         match self {
             Self::I => 0,
             Self::Ii => 1,
@@ -54,6 +54,40 @@ impl Point {
 pub struct Place {
     pub row: Point,
     pub collum: Point,
+}
+
+impl Place {
+    pub fn up(&mut self) {
+        self.row = match self.row {
+            Point::I => Point::Ii,
+            Point::Ii => Point::Iii,
+            Point::Iii => Point::I,
+        }
+    }
+
+    pub fn down(&mut self) {
+        self.row = match self.row {
+            Point::I => Point::Iii,
+            Point::Ii => Point::I,
+            Point::Iii => Point::Ii,
+        }
+    }
+
+    pub fn left(&mut self) {
+        self.collum = match self.collum {
+            Point::I => Point::Iii,
+            Point::Ii => Point::I,
+            Point::Iii => Point::Ii,
+        }
+    }
+
+    pub fn right(&mut self) {
+        self.collum = match self.collum {
+            Point::I => Point::Ii,
+            Point::Ii => Point::Iii,
+            Point::Iii => Point::I,
+        }
+    }
 }
 
 pub struct Board{
