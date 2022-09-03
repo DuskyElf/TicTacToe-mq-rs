@@ -51,7 +51,7 @@ async fn draw_board(board_state: [[Cell; 3]; 3], tex1: Texture2D, tex2: Texture2
 
     // Drawing Cell Outlines
     // Drawing them before the board as full rectangles
-    // because board backgournd texture have transparent holes for these outlines
+    // because board background texture have transparent holes for these outlines
     draw_rectangle(board_x, board_y, 
         scale(board_size), scale(board_size),
         CELL_OUTLINE_COLOR);
