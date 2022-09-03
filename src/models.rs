@@ -58,23 +58,23 @@ pub struct Place {
 
 impl Place {
     pub fn up(&mut self) {
-        self.row = match self.row {
-            Point::I => Point::Ii,
-            Point::Ii => Point::Iii,
-            Point::Iii => Point::I,
-        }
-    }
-
-    pub fn down(&mut self) {
-        self.row = match self.row {
+        self.collum = match self.collum {
             Point::I => Point::Iii,
             Point::Ii => Point::I,
             Point::Iii => Point::Ii,
         }
     }
 
-    pub fn left(&mut self) {
+    pub fn down(&mut self) {
         self.collum = match self.collum {
+            Point::I => Point::Ii,
+            Point::Ii => Point::Iii,
+            Point::Iii => Point::I,
+        }
+    }
+
+    pub fn left(&mut self) {
+        self.row = match self.row {
             Point::I => Point::Iii,
             Point::Ii => Point::I,
             Point::Iii => Point::Ii,
@@ -82,7 +82,7 @@ impl Place {
     }
 
     pub fn right(&mut self) {
-        self.collum = match self.collum {
+        self.row = match self.row {
             Point::I => Point::Ii,
             Point::Ii => Point::Iii,
             Point::Iii => Point::I,
