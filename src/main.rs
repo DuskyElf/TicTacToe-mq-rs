@@ -3,6 +3,7 @@ use macroquad::prelude::*;
 pub mod models;
 use models::*;
 
+// Game Constants
 const BG_COLOR: Color = color_u8!(255, 196, 196, 255);
 const CELL_OUTLINE_COLOR: Color = color_u8!(238, 105, 131, 255);
 const SELECTED_OUTLINE_COLOR: Color = color_u8!(17, 150, 124, 255);
@@ -28,7 +29,7 @@ async fn main() {
 }
 
 async fn draw_board(board_state: [[Cell; 3]; 3], tex1: Texture2D, tex2: Texture2D, tex3: Texture2D, selector: &Place) {
-    // Calculating relative dimentions
+    // Marking absolute dimentions from relative figures
     let board_x = (screen_width() / 2.) - (screen_height() * 0.8) / 2.;
     let board_y = screen_height() * 0.1;
     let board_size = screen_height() * 0.8;
@@ -37,7 +38,9 @@ async fn draw_board(board_state: [[Cell; 3]; 3], tex1: Texture2D, tex2: Texture2
     let outline_x = selector.row.value();
     let outline_y = selector.collum.value();
 
-    //  Drawing Cell Outlines
+    // Drawing Cell Outlinesk
+    // Drawing them before the board as full rectangles
+    // because board backgournd texture have transparent holes for these outlines
     draw_rectangle(board_x, board_y, board_size, board_size, CELL_OUTLINE_COLOR);
     draw_rectangle(
         board_x + calc_cell_start(outline_x),
@@ -47,7 +50,7 @@ async fn draw_board(board_state: [[Cell; 3]; 3], tex1: Texture2D, tex2: Texture2
         SELECTED_OUTLINE_COLOR
     );
 
-    // Drawing the board
+    // Drawing the board background
     draw_texture_ex(tex1,
         board_x, board_y,
         WHITE,
