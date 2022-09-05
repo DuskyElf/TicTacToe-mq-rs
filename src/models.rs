@@ -35,6 +35,7 @@ impl Cell {
     }
 }
 
+#[derive(Clone, Copy)]
 pub enum Point {
     I,
     Ii,
@@ -51,6 +52,7 @@ impl Point {
     }
 }
 
+#[derive(Clone, Copy)]
 pub struct Place {
     pub row: Point,
     pub collum: Point,
@@ -58,7 +60,7 @@ pub struct Place {
 
 impl Place {
     pub fn up(&mut self) {
-        self.collum = match self.collum {
+        self.row = match self.row {
             Point::I => Point::Iii,
             Point::Ii => Point::I,
             Point::Iii => Point::Ii,
@@ -66,7 +68,7 @@ impl Place {
     }
 
     pub fn down(&mut self) {
-        self.collum = match self.collum {
+        self.row = match self.row {
             Point::I => Point::Ii,
             Point::Ii => Point::Iii,
             Point::Iii => Point::I,
@@ -74,7 +76,7 @@ impl Place {
     }
 
     pub fn left(&mut self) {
-        self.row = match self.row {
+        self.collum = match self.collum {
             Point::I => Point::Iii,
             Point::Ii => Point::I,
             Point::Iii => Point::Ii,
@@ -82,7 +84,7 @@ impl Place {
     }
 
     pub fn right(&mut self) {
-        self.row = match self.row {
+        self.collum = match self.collum {
             Point::I => Point::Ii,
             Point::Ii => Point::Iii,
             Point::Iii => Point::I,
@@ -99,7 +101,7 @@ impl Board {
         Self {board_state: [[Cell::Empty; 3]; 3]}
     }
 
-    pub fn play_move(&mut self, place: Place, player: &Player) {
+    pub fn play_move(&mut self, place: &Place, player: &Player) {
         self[&place] = Cell::Filled(player.clone());
     }
 }
@@ -116,6 +118,12 @@ impl IndexMut<&Place> for Board {
     fn index_mut(&mut self, index: &Place) -> &mut Cell {
         &mut self.board_state[index.row.value()][index.collum.value()]
     } 
+}
+
+pub struct Game {
+    pub board: Board,
+    pub selector: Place,
+    pub current_turn: Player,
 }
 
 pub enum Winner {
