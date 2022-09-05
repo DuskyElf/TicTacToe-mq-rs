@@ -109,7 +109,7 @@ fn cell_start(index: usize) -> u32 {
     // because the board beckground have different cell sizes
     match index {
         0 => 0,
-        1 => 22,
+        1 => 23,
         2 => 42,
         _ => 0
     }
@@ -119,8 +119,8 @@ fn cell_outline_size(index: usize) -> u32 {
     // Have to implement it like this
     // because the board beckground have different cell sizes
     match index {
-        0 => 21,
-        1 => 19,
+        0 => 22,
+        1 => 18,
         2 => 22,
         _ => 0
     }
@@ -130,8 +130,8 @@ fn cell_inner_size(index: usize) -> u32 {
     // Have to implement it like this
     // because the board beckground have different cell sizes
     match index {
-        0 => 17,
-        1 => 15,
+        0 => 18,
+        1 => 14,
         2 => 18,
         _ => 0
     }
