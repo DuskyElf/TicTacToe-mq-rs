@@ -89,13 +89,13 @@ fn game_logic(game: &mut Game) {
         }
     }
 
-    // Checking if the game got draw
-    if check_draw(&game.board) {
+    // Checking if the game was tied
+    if check_tie(&game.board) {
         exit(0);
     }
 }
 
-fn check_draw(board: &Board) -> bool {
+fn check_tie(board: &Board) -> bool {
     for i in board.board_state {
         for cell in i {
             if cell == Cell::Empty {
