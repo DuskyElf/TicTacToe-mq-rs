@@ -1,4 +1,10 @@
 use std::ops::{Index, IndexMut};
+use macroquad::{color_u8, color::Color};
+
+// Game Constants
+pub const BG_COLOR: Color = color_u8!(255, 196, 196, 255);
+pub const CELL_OUTLINE_COLOR: Color = color_u8!(238, 105, 131, 255);
+pub const SELECTED_OUTLINE_COLOR: Color = color_u8!(17, 150, 124, 255);
 
 #[derive(Copy, Clone, PartialEq)]
 pub enum Player {
@@ -115,4 +121,20 @@ pub struct Game {
 pub enum GameResult {
     Won(Player),
     Draw,
+}
+
+#[derive(Clone)]
+pub enum EndScreenResult {
+    Restart,
+    Quit,
+}
+
+impl EndScreenResult {
+    pub fn down(&mut self) {
+        *self = EndScreenResult::Quit;
+    }
+
+    pub fn up(&mut self) {
+        *self = EndScreenResult::Restart;
+    }
 }

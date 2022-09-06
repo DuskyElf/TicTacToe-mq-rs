@@ -1,11 +1,6 @@
 use macroquad::prelude::*;
 use crate::models::*;
 
-// Game Constants
-const BG_COLOR: Color = color_u8!(255, 196, 196, 255);
-const CELL_OUTLINE_COLOR: Color = color_u8!(238, 105, 131, 255);
-const SELECTED_OUTLINE_COLOR: Color = color_u8!(17, 150, 124, 255);
-
 pub async fn load_scene() -> GameResult {
     // Loading textures
     let board_texture = load_texture("./assests/board.png").await.unwrap();
