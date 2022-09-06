@@ -21,20 +21,6 @@ pub enum Cell {
     Filled(Player),
 }
 
-impl Cell {
-   pub fn print(&self) -> &str {
-        match self {
-            Self::Empty => return " ",
-            Self::Filled(player) => {
-                match player {
-                    Player::X => return "X",
-                    Player::O => return "O",
-                }
-            }
-        }
-    }
-}
-
 #[derive(Clone, Copy)]
 pub enum Point {
     I,
@@ -126,12 +112,7 @@ pub struct Game {
     pub current_turn: Player,
 }
 
-pub enum Winner {
+pub enum GameResult {
     Won(Player),
     Draw,
-}
-
-pub struct GameResult {
-    pub winner: Winner,
-    pub game_lap: u8,
 }
