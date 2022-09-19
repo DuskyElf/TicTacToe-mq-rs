@@ -16,4 +16,4 @@ $ cargo run --release
 <kbd>d</kbd> movement in game / menu
 
 - <kbd>Space</kbd> select cell in game
-- <kbd>Enter</kbd> / <kbd>return</kbd> select in menu
+- <kbd>Enter</kbd> <kbd>return</kbd> select in menu
